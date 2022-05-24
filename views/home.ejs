@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMEGRAM</title>
+
+    <!-- tipografias-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="icon"
+        href="memes/logo.png"
+        type="image/x-icon">
+
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="/stylesheets/general.css">
+
+    <!-- UiKit -->
+    <!-- <link rel="stylesheet" href="css/uikit.min.css">
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="js/uikit.min.js"></script> -->
+    <!-- UiKit -->
+    
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/css/uikit.min.css" />
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+    <% if (locals.user){ %> 
+        <%- include('./partials/headerLogueado')  %> 
+        <% } else { %>
+        <%- include("./partials/headerDeslogueado") %>
+        <% } %>  
+            <br><br>
+    <main>
+        <div class="uk-section uk-section-small">
+            <div class="uk-container uk-container-large uk-flex">
+                <section id="posts" class="uk-flex uk-flex-middle uk-flex-center uk-flex-column uk-child-width-1-2 uk-width-1-1">
+
+                <% for (i=0; i<posts.length; i++){ %> 
+                    <article class="post uk-card-default uk-flex uk-flex-column">
+                        <div class="info-usuario uk-flex ">
+                            <div>
+                                <img src="https://via.placeholder.com/40" class="inverted" alt="">
+                            </div>
+                            <h4><%- posts[i].users.nombre_usuario  %> </h4>
+                            
+                        </div>
+                        <div class="post-body uk-flex uk-flex-center">
+                            <img src="<%- posts[i].url_img  %> " class="inverted" alt="">
+                        </div>
+                        <div class="post-reacciones">
+                            <ul class="post-icons uk-flex uk-flex-between">
+                                <li><span class="" uk-icon="icon:heart; ratio: 1.3"></span>
+                                </li>
+                                <li><span class="" uk-icon="icon:comments; ratio: 1.3"></span>
+                                </li>
+                            </ul>
+                            <div class="post-pie uk-flex">
+                                <h5 class="uk-width-1-6"><%- posts[i].users.nombre_usuario  %> </h5>
+                                <p class="uk-width-5-6"> <%- posts[i].post_descr  %> </p>
+                            </div>
+                        </div>
+                         
+                        <div class="post-comentarios">
+                            <h6>Comentarios</h6>
+                            <ul>
+                               <!-- <% /*for (i=0; i<posts.comentarios.length; i++) { */ %> 
+
+                                <li>
+                                    <a href="/users/detalleUsuario/<%- /* posts.comentarios[i].id_usuario  */ %> "><%- /* posts.comentarios[i].id_usuario */ %> </a>
+                                    <p><%- /* posts.comentarios[i].comentario */  %> </p>
+                                </li>
+                                <% /* } */  %> 
+                            -->
+                                <li>
+                                    <a href="/users/detalleUsuario">valunies</a>
+                                    <p>JAJAJAJA</p>
+                                </li>
+                                <a href=/post/detallePost/<%- posts[i].id  %> ">Ver más...</a>
+                            </ul>
+                        </div>
+                        <% } %>
+
+                    </article>
+                
+        
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <%- include('./partials/footer.ejs') %> 
+</body>
+
+</html>
